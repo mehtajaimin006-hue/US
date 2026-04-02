@@ -3,81 +3,69 @@
   <meta charset="UTF-8">
   <title>for idluuu</title>  <style>
     body {
-      background: #111;
-      color: #eee;
-      font-family: monospace;
+      margin: 0;
+      padding: 0;
+      background: #fffbe6;
+      color: #5a4b2c;
+      font-family: "Georgia", serif;
       text-align: center;
-      padding: 40px;
+      padding: 40px 20px;
     }
 
-    #text {
-      white-space: pre-line;
-      min-height: 200px;
+    h2 {
+      font-weight: normal;
+      margin-bottom: 30px;
+    }
+
+    .line {
+      opacity: 0;
+      transform: translateY(10px);
+      transition: all 1s ease;
+      margin: 12px 0;
+    }
+
+    .show {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     #counter {
-      margin-top: 20px;
-      color: #aaa;
+      margin-top: 30px;
       font-size: 14px;
+      color: #8a7a4f;
     }
-  </style></head><body><h2>for idluuu</h2><p id="text"></p><p id="counter"></p><script>
+  </style></head><body><h2>for idluuu</h2><div id="content">
+  <p class="line">today felt really special...</p>  <p class="line">we enjoyed that game so much</p>
+  <p class="line">trying to find faculties from descriptions</p>  <p class="line">the first one was easy</p>
+  <p class="line">but the second one... a little hard</p>  <p class="line">still, we enjoyed it a lot</p>  <p class="line">and after lunch,</p>
+  <p class="line">that time with you felt peaceful</p>  <p class="line">the way you smiled</p>
+  <p class="line">every time i asked "what?"</p>
+  <p class="line">with that small tilt of your head</p>  <p class="line">i don't know why...</p>
+  <p class="line">but i wanted to protect that smile</p>  <p class="line">i really do</p>  <p class="line">i love you khushi</p>  <p class="line">— your minu</p>
+</div><div id="counter"></div><script>
+  // SHOW LINES ONE BY ONE (soft fade)
+  const lines = document.querySelectorAll(".line");
 
-const message =
-`today felt really special...
+  lines.forEach((line, index) => {
+    setTimeout(() => {
+      line.classList.add("show");
+    }, index * 1200);
+  });
 
-we enjoyed that game so much
-trying to find faculties from the descriptions
+  // DATE (CHANGE IF NEEDED)
+  const startDate = new Date("2025-05-04T00:00:00");
 
-the first one was easy
-but the second one...
-a little hard
+  function updateCounter() {
+    const now = new Date();
+    const diff = now - startDate;
 
-still, we enjoyed it a lot
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
 
-and after lunch,
-that time with you felt... peaceful
-
-the way you smiled
-every time i asked "what?"
-with that small tilt of your head
-
-i don't know why,
-but i just wanted to protect that smile
-
-i really do
-
-i love you khushi
-
-— your minu`;
-
-let i = 0;
-
-function typeWriter() {
-  if (i < message.length) {
-    document.getElementById("text").innerHTML += message.charAt(i);
-    i++;
-    setTimeout(typeWriter, 35);
+    document.getElementById("counter").innerHTML =
+      "with you for " + days + " days and " + hours + " hours";
   }
-}
 
-typeWriter();
-
-// DATE (CHANGE ONLY IF WRONG)
-// current = 4 May 2025
-const startDate = new Date("2025-05-04T00:00:00");
-
-function updateCounter() {
-  const now = new Date();
-  const diff = now - startDate;
-
-  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-  const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-
-  document.getElementById("counter").innerHTML =
-    "with you for " + days + " days and " + hours + " hours";
-}
-
-setInterval(updateCounter, 1000);
-
+  setInterval(updateCounter, 1000);
 </script></body>
 </html>
