@@ -1,0 +1,83 @@
+<!DOCTYPE html><html>
+<head>
+  <meta charset="UTF-8">
+  <title>for idluuu</title>  <style>
+    body {
+      background: #111;
+      color: #eee;
+      font-family: monospace;
+      text-align: center;
+      padding: 40px;
+    }
+
+    #text {
+      white-space: pre-line;
+      min-height: 200px;
+    }
+
+    #counter {
+      margin-top: 20px;
+      color: #aaa;
+      font-size: 14px;
+    }
+  </style></head><body><h2>for idluuu</h2><p id="text"></p><p id="counter"></p><script>
+
+const message =
+`today felt really special...
+
+we enjoyed that game so much
+trying to find faculties from the descriptions
+
+the first one was easy
+but the second one...
+a little hard
+
+still, we enjoyed it a lot
+
+and after lunch,
+that time with you felt... peaceful
+
+the way you smiled
+every time i asked "what?"
+with that small tilt of your head
+
+i don't know why,
+but i just wanted to protect that smile
+
+i really do
+
+i love you khushi
+
+— your minu`;
+
+let i = 0;
+
+function typeWriter() {
+  if (i < message.length) {
+    document.getElementById("text").innerHTML += message.charAt(i);
+    i++;
+    setTimeout(typeWriter, 35);
+  }
+}
+
+typeWriter();
+
+// DATE (CHANGE ONLY IF WRONG)
+// current = 4 May 2025
+const startDate = new Date("2025-05-04T00:00:00");
+
+function updateCounter() {
+  const now = new Date();
+  const diff = now - startDate;
+
+  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+
+  document.getElementById("counter").innerHTML =
+    "with you for " + days + " days and " + hours + " hours";
+}
+
+setInterval(updateCounter, 1000);
+
+</script></body>
+</html>
